@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar informacion</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        body {  
+          align-items: center;
+          padding-top: 40px;
+          padding-bottom: 40px;
+          background-color:rgba(255,255,255,0.95);
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Editar información de usuario</h2>
+    <% if (usuario){ %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 shadow-lg p-3 mb-5">
+
+                <div class="card border-primary">
+                    <div class="card-header bg-primary text-white">Registrarse</div>
+                    <div class="card-body text-primary">
+                        <form action="/update" method="POST">
+                            <input id="id" name="id" value="<%= usuario.id %>" hidden>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input id="email" name="email" type="email" class="form-control"
+                                    aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input id="password" name="password" type="password" class="form-control" tabindex="1" value="<%= usuario.contraseña %>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="rol" class="form-label">Rol</label>
+                                <select id="rol" name="rol" type="select" class="form-control" tabindex="2">
+                                    <option <% usuario.rol ==='administrador' ? 'selected':'' %> value="administrador">Administrador</option>
+                                    <option <% usuario.rol === 'usuario' ? 'selected':'' %> value="usuario">Usuario estandar</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name" class="form-label" tabindex="3">Nombre </label>
+                                <input id="nombre" name="nombre" type="text" class="form-control" value="<%= usuario.nombre %>">
+                            </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-primary">
+                        <a href="/" type="button" class="btn btn-secondary">Cancelar</a>
+                        <button type="submit" class="btn btn-primary" tabindex="4">Actualizar</button>
+                    </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    <% } %>   
+
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

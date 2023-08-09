@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Iniciar sesión</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+
+    <main class="form-signin">
+        <form id="formLogin" action="/login" method="POST">
+            <img class="mb-4" src="img/logo_utalca_oscuro.png" alt="" width="72" height="100">
+            <h1 class="h3 mb-3 fw-normal">Por favor inicie sesión</h1>
+
+            <div class="form-floating">
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                <label for="email">Email</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                <label for="password">Contraseña</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Iniciar sesión</button>
+        </form>
+        <br>
+        <a href="/registro" type="button" class="w-100 btn btn-lg btn-primary">Registrarse</a>
+    </main>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <% if(alert) { %>
+    <script>
+      Swal.fire({
+        title: '<%= alertTitle %>',
+        text:'<%= alertMessage %>',
+        icon:'<%= alertIcon %>',
+        showConfirmButton: <%= showConfirmButton %>,
+        timer: <%= timer %>
+      }).then(()=>{
+        window.location = '/<%= ruta %>'
+      })
+    </script>
+  <% } %>
+</body>
+
+</html>
