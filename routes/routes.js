@@ -35,16 +35,9 @@ router.get("/perfil", authController.isAuthenticated,(req, res) => {
   });
 
 //ruta para mostrar la información del usuario estandar
-router.get("/perfilEstandar/:id",(req,res)=>{
-  const id = req.params.id;
-  conexion.query('SELECT * FROM usuario WHERE id=?',[id],(error,results)=>{
-    if(error){
-      throw(error)
-    }else{
-      res.render('perfilEstandar',{usuario:results[0]})
-    }
-  })
-});
+router.get("/perfilEstandar",authController.isAuthenticated,(req,res)=>{
+  res.render("perfilEstandar", {usuario: req.usuario})
+} );
 
 //Ruta de edicion de usuario seleccionado
 router.get('/editInfoAdmin/:id', authController.isAuthenticated,(req,res)=>{
@@ -75,5 +68,4 @@ router.post('/login',authController.login)
 router.post('/update', authController.update)
 router.get('/cerrarSesion',authController.cerrarSesion)
 router.get('/logout', authController.cerrarSesion)
-
 module.exports = router;
