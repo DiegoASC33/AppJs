@@ -13,7 +13,7 @@
 </head>
 
 <body class="text-center">
-
+  <!--Campos para iniciar sesión-->
     <main class="form-signin">
         <form id="formLogin" action="/login" method="POST">
             <img class="mb-4" src="img/logo_utalca_oscuro.png" alt="" width="72" height="100">
@@ -33,6 +33,7 @@
         <a href="/registro" type="button" class="w-100 btn btn-lg btn-primary">Registrarse</a>
     </main>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--alerta de validación de inicio de sesión-->
   <% if(alert) { %>
     <script>
       Swal.fire({

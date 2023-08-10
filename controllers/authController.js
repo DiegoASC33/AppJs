@@ -7,6 +7,7 @@ const res = require("express/lib/response");
 const { error } = require("console");
 const {swal} = require('sweetalert')
 
+//registro de usuarios mediante token 
 exports.register = async (req, res) => {
   try {
     const email = req.body.email;
@@ -28,11 +29,14 @@ exports.register = async (req, res) => {
   }
 };
 
+
+//inicio de sesion 
 exports.login = async (req, res) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
 
+    //errores de campo 
     if (!email || !password) {
       res.render('login', {
         alert: true,
@@ -43,7 +47,7 @@ exports.login = async (req, res) => {
         timer: false,
         ruta: 'login',
       })
-      
+      //errores en los datos 
     } else {
       conexion.query('SELECT * FROM usuario WHERE email = ?',[email],async (error, results) => {
           if (results.length == 0 || !(await bcryptjs.compare(password, results[0].contraseña))) {
@@ -89,6 +93,7 @@ exports.login = async (req, res) => {
   }
 };
 
+//autentucación de usuario 
 exports.isAuthenticated = async (req,res,next) =>{
   if(req.cookies.jwt){
     try{
@@ -107,13 +112,14 @@ exports.isAuthenticated = async (req,res,next) =>{
     }
   }
 
+  //cerrar la sesión del usuario 
 exports.cerrarSesion = (req,res)=>{
   res.clearCookie('jwt')
   return res.redirect('/')
 }
 
 //Metodos para el CRUD
-
+// actualizar el campo seleccionado mediante la ruta edit
 exports.update = (req, res)=>{
   const id = req.body.id;
   const email = req.body.email;
