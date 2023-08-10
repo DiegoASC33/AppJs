@@ -25,6 +25,14 @@ app.use(cookieParser());
 //llamado al enrutador
 app.use('/',require('./routes/routes'))
 
+
+//eliminar caché
+app.use(function(req, res, next) {
+    if (!req.user)
+        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+    next();
+});
+
 //Declaración de puerto
 app.listen(3000, () =>{
     console.log("Server is running on port 3000");

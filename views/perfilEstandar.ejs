@@ -28,24 +28,47 @@
       </div>
       <div class="card-body">
         <% if (usuario) { %>
-          <p class="card-text" hidden></p><span class="badge bg-success"><%= usuario.id %></span></p>
-          <p class="card-text"></p><span class="badge bg-success"><%= usuario.email %></span></p>
-          <p class="card-text"></p><span class="badge bg-success"><%= usuario.password %></span></p>
-          <p class="card-text"></p><span class="badge bg-success"><%= usuario.rol %></span></p>
-          <p class="card-text"></p><span class="badge bg-success"><%= usuario.nombre %></span></p>
-
-        <% } %>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="/editInfoAdmin" class="btn btn-primary">Editar información</a>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <p class="card-text" hidden></p><span class="badge bg-success">
+                <%= usuario.id %>
+              </span></p>
+            </li>
+            <li class="list-group-item">
+              <p class="card-text"></p><span class="badge bg-success">
+                <%= usuario.email %>
+              </span></p>
+            </li>
+            <li class="list-group-item">
+              <p class="card-text"></p><span class="badge bg-success">
+                <%= usuario.password %>
+              </span></p>
+            </li>
+            <li class="list-group-item">
+              <p class="card-text"></p><span class="badge bg-success">
+                <%= usuario.rol %>
+              </span></p>
+            </li>
+            <li class="list-group-item">
+              <p class="card-text"></p><span class="badge bg-success">
+                <%= usuario.nombre %>
+              </span></p>
+            </li>
+          </ul>
+          <% } %>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="/editInfoAdmin" class="btn btn-primary">Editar información</a>
       </div>
     </div>
   </div>
-<footer>
-  <div class="navbar-nav">
-    <div class="nav-item text-nowrap">
-      <a type="button" class="px-3 btn btn-danger" href="logout">Logout</a>
+  <footer>
+    <div class="navbar-nav">
+      <div class="nav-item text-nowrap">
+        <a type="button" class="px-3 btn btn-danger" href="logout">Logout</a>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
+  <script src="js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
